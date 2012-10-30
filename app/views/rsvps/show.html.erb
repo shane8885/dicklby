@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Surname:</b>
+  <%= @rsvp.surname %>
+</p>
+
+<p>
+  <b>Firstname:</b>
+  <%= @rsvp.firstname %>
+</p>
+
+<p>
+  <b>Coming:</b>
+  <%= @rsvp.coming %>
+</p>
+
+<p>
+  <b>Vegetarian:</b>
+  <%= @rsvp.vegetarian %>
+</p>
+
+<p>
+  <b>Vegan:</b>
+  <%= @rsvp.vegan %>
+</p>
+
+<p>
+  <b>Bus:</b>
+  <%= @rsvp.bus %>
+</p>
+
+<p>
+  <b>Ferry:</b>
+  <%= @rsvp.ferry %>
+</p>
+
+
+<%= link_to 'Edit', edit_rsvp_path(@rsvp) %> |
+<%= link_to 'Back', rsvps_path %>
