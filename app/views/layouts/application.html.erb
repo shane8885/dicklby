@@ -23,6 +23,8 @@
             <li><%= link_to "Reception", pages_reception_path %></li>
             <li><%= link_to "Transport", pages_transport_path %></li>
             <li><%= link_to "Accomodation", pages_accomodation_path  %></li>
+            <li class="divider-vertical"></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, :method => 'delete' %></li>
           </ul>
         </div>
       </div>
