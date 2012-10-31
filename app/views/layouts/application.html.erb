@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= yield :head %>
 </head>
 <body>
   <div class="navbar navbar-fixed-top navbar-inverse">
@@ -31,6 +32,27 @@
     </div>
   </div>
   <div class="container">
+    <div class="row">
+    <div class="span12">
+    <% unless flash[:notice].blank? %>
+      <div class="alert info">
+        <%= content_tag :div, flash[:notice] %>
+      </div>
+    <% end %>
+
+    <% unless flash[:error].blank? %>
+      <div class="alert error">
+        <%= content_tag :div, flash[:error] %>
+      </div>
+    <% end %>
+
+    <% unless flash[:alert].blank? %>
+      <div class="alert warning">
+        <%= content_tag :div, flash[:alert] %>
+      </div>
+    <% end %>
+    </div>
+    </div>
     <%= yield %>
   </div>
 </body>
