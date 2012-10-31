@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dicklby</title>
+  <title>Shane and Emma's Wedding</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="/pages/home">Emma and Shane's Wedding</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><%= link_to "RSVP", new_rsvp_path%></li>
+            <li><%= link_to "Ceremony", pages_ceremony_path %></li>
+            <li><%= link_to "Reception", pages_reception_path %></li>
+            <li><%= link_to "Transport", pages_transport_path %></li>
+            <li><%= link_to "Accomodation", pages_accomodation_path  %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>

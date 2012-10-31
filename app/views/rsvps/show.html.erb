@@ -1,40 +1,33 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Rsvp -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Surname:</b>
-  <%= @rsvp.surname %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:surname) %>:</strong></dt>
+  <dd><%= @rsvp.surname %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:firstname) %>:</strong></dt>
+  <dd><%= @rsvp.firstname %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:coming) %>:</strong></dt>
+  <dd><%= @rsvp.coming %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:vegetarian) %>:</strong></dt>
+  <dd><%= @rsvp.vegetarian %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:vegan) %>:</strong></dt>
+  <dd><%= @rsvp.vegan %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:bus) %>:</strong></dt>
+  <dd><%= @rsvp.bus %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ferry) %>:</strong></dt>
+  <dd><%= @rsvp.ferry %></dd>
+</dl>
 
-<p>
-  <b>Firstname:</b>
-  <%= @rsvp.firstname %>
-</p>
-
-<p>
-  <b>Coming:</b>
-  <%= @rsvp.coming %>
-</p>
-
-<p>
-  <b>Vegetarian:</b>
-  <%= @rsvp.vegetarian %>
-</p>
-
-<p>
-  <b>Vegan:</b>
-  <%= @rsvp.vegan %>
-</p>
-
-<p>
-  <b>Bus:</b>
-  <%= @rsvp.bus %>
-</p>
-
-<p>
-  <b>Ferry:</b>
-  <%= @rsvp.ferry %>
-</p>
-
-
-<%= link_to 'Edit', edit_rsvp_path(@rsvp) %> |
-<%= link_to 'Back', rsvps_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              rsvps_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_rsvp_path(@rsvp), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              rsvp_path(@rsvp),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

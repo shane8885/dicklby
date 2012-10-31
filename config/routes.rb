@@ -1,4 +1,14 @@
 Dicklby::Application.routes.draw do
+  get "pages/home"
+
+  get "pages/ceremony"
+
+  get "pages/reception"
+
+  get "pages/transport"
+
+  get "pages/accomodation"
+
   resources :rsvps
 
   # The priority is based upon order of creation:
