@@ -19,19 +19,25 @@
         <a class="brand" href="/pages/home">Emma and Shane's Wedding</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">RSVP<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Leave an RSVP", new_rsvp_path %></li>
-                <li><%= link_to "List RSVPs", rsvps_path %></li>
-              </ul>
-            </li>
-            <li><%= link_to "Ceremony", pages_ceremony_path %></li>
-            <li><%= link_to "Reception", pages_reception_path %></li>
-            <li><%= link_to "Transport", pages_transport_path %></li>
-            <li><%= link_to "Accomodation", pages_accomodation_path  %></li>
-            <li class="divider-vertical"></li>
-            <li><%= link_to "Sign Out", destroy_user_session_path, :method => 'delete' %></li>
+            <% if user_signed_in? %>
+              <% if current_user.admin? %> 
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">RSVP<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "Leave an RSVP", new_rsvp_path %></li>
+                    <li><%= link_to "List RSVPs", rsvps_path %></li>
+                  </ul>
+                </li>
+              <% else %>
+                <li><%= link_to "RSVP", new_rsvp_path %></li>
+              <% end %>
+              <li><%= link_to "Ceremony", pages_ceremony_path %></li>
+              <li><%= link_to "Reception", pages_reception_path %></li>
+              <li><%= link_to "Transport", pages_transport_path %></li>
+              <li><%= link_to "Accomodation", pages_accomodation_path  %></li>
+              <li class="divider-vertical"></li>
+              <li><%= link_to "Sign Out", destroy_user_session_path, :method => 'delete' %></li>
+            <% end %> 
           </ul>
         </div>
       </div>

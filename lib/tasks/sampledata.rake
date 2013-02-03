@@ -16,4 +16,5 @@ end
 
 def make_users
   User.create!(:username => 'shaneandemma', :password => 'simmeronthebay', :password_confirmation => 'simmeronthebay')
+  User.create!(:username => 'dicko', :password => 'kl33n3x', :password_confirmation => 'kl33n3x', :admin => true)
 end
