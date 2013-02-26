@@ -4,13 +4,15 @@
   <title>Shane and Emma's Wedding</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <link href='http://fonts.googleapis.com/css?family=Yesteryear' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
   <%= yield :head %>
 </head>
 <body>
   <div class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
-      <div class="container">
+      <div class="container-fluid">
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -18,8 +20,20 @@
         </a>
         <a class="brand" href="/pages/home">Emma and Shane's Wedding</a>
         <div class="nav-collapse">
-          <ul class="nav">
+          <p class="navbar-text pull-right">
+             Logged in.<%= link_to "Sign Out", destroy_user_session_path, :method => 'delete' %>
+          </p> 
+        </div><!-- nav-collapse -->
+      </div><!--containter-fluid -->
+    </div><!--navbar-inner -->
+  </div><!--navbar -->
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span2">
+        <div class="sidebar-nav">
+          <ul class="nav nav-list">
             <% if user_signed_in? %>
+              <li class="active"><%= link_to "Home",pages_home_path %></li>
               <% if current_user.admin? %> 
                 <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">RSVP<b class="caret"></b></a>
@@ -31,41 +45,42 @@
               <% else %>
                 <li><%= link_to "RSVP", new_rsvp_path %></li>
               <% end %>
-              <li><%= link_to "Ceremony", pages_ceremony_path %></li>
-              <li><%= link_to "Reception", pages_reception_path %></li>
-              <li><%= link_to "Transport", pages_transport_path %></li>
-              <li><%= link_to "Accomodation", pages_accomodation_path  %></li>
-              <li class="divider-vertical"></li>
-              <li><%= link_to "Sign Out", destroy_user_session_path, :method => 'delete' %></li>
+              <li><%= link_to "The Wedding", pages_ceremony_path %></li>
+              <li><%= link_to "The Next Day", pages_ceremony_path %></li>
+              <li><%= link_to "Gifts", pages_accomodation_path  %></li>
+              <li><%= link_to "Guide to Sydney", pages_transport_path %></li>
+              <li><%= link_to "Contacts", pages_transport_path %></li>
             <% end %> 
           </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-    <div class="span12">
-    <% unless flash[:notice].blank? %>
-      <div class="alert info">
-        <%= content_tag :div, flash[:notice] %>
-      </div>
-    <% end %>
+        </div><!-- well -->
+      </div><!-- span -->
+      <div class="span10">
+        <div class="row-fluid">
+          <% unless flash[:notice].blank? %>
+            <div class="alert info">
+              <%= content_tag :div, flash[:notice] %>
+            </div>
+          <% end %>
 
-    <% unless flash[:error].blank? %>
-      <div class="alert error">
-        <%= content_tag :div, flash[:error] %>
-      </div>
-    <% end %>
+          <% unless flash[:error].blank? %>
+            <div class="alert error">
+              <%= content_tag :div, flash[:error] %>
+            </div>
+          <% end %>
 
-    <% unless flash[:alert].blank? %>
-      <div class="alert warning">
-        <%= content_tag :div, flash[:alert] %>
-      </div>
-    <% end %>
-    </div>
-    </div>
-    <%= yield %>
-  </div>
+          <% unless flash[:alert].blank? %>
+            <div class="alert warning">
+              <%= content_tag :div, flash[:alert] %>
+            </div>
+          <% end %>
+        </div><!-- row -->
+        <div class="row-fluid">
+          <div class="span9">
+            <%= yield %>
+          </div><!-- span -->
+        </div><!-- row-fluid -->
+      </div><!-- span -->
+    </div><!-- row-fluid -->
+  </div><!-- container -->
 </body>
 </html>
